@@ -1,0 +1,80 @@
+10
+
+dir
+598
+http://amse-agregator.googlecode.com/svn/trunk/libs/xfreshlibs
+http://amse-agregator.googlecode.com/svn
+
+
+
+2010-12-07T05:49:27.398343Z
+394
+korgovk
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+def51087-30bf-c014-2c78-f9f0ffc3c973
+
+jetty
+dir
+
+log4j
+dir
+
+xfresh-core.jar
+file
+
+
+
+
+2011-10-02T10:35:28.158486Z
+f1d3fb2f7c00e90564eb1ace0ad44964
+2010-12-07T05:49:27.398343Z
+394
+korgovk
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+35100
+
+spring
+dir
+
+xalan
+dir
+
+jakarta-commons
+dir
+
+httpclient
+dir
+

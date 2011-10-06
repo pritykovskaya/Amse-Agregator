@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/300/trunk/libs/xfreshlibs/xalan
+END
+serializer.jar
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/300/trunk/libs/xfreshlibs/xalan/serializer.jar
+END
+xercesImpl.jar
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/300/trunk/libs/xfreshlibs/xalan/xercesImpl.jar
+END
+xalan.jar
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/300/trunk/libs/xfreshlibs/xalan/xalan.jar
+END

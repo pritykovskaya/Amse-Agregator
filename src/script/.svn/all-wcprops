@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 34
+/svn/!svn/ver/567/trunk/src/script
+END
+start.sh
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/302/trunk/src/script/start.sh
+END
+beans.xml
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/567/trunk/src/script/beans.xml
+END
+log4j.xml
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/302/trunk/src/script/log4j.xml
+END

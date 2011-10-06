@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/!svn/ver/316/trunk/src/java/ru/amse/agregator/quality/clusterization/declusterization
+END
+Declusterizer.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/!svn/ver/316/trunk/src/java/ru/amse/agregator/quality/clusterization/declusterization/Declusterizer.java
+END
+DeclusterizationProcess.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/!svn/ver/316/trunk/src/java/ru/amse/agregator/quality/clusterization/declusterization/DeclusterizationProcess.java
+END
+SimpleDeclusterizer.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/!svn/ver/316/trunk/src/java/ru/amse/agregator/quality/clusterization/declusterization/SimpleDeclusterizer.java
+END

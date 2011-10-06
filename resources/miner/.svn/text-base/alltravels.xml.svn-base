@@ -1,0 +1,480 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config>
+	<empty>
+		<var-def name="sourceUrl">
+	        http://www.alltravels.com.ua/
+	    </var-def>
+		<var-def name="blank"></var-def>
+	    <var-def name="home">
+	        http://www.country.alltravels.com.ua/ru/
+	    </var-def>
+	
+		<var-def name="countriesListPage">
+	    	<html-to-xml>
+	            <http url= "www.country.alltravels.com.ua/ru/" charset="UTF-8"/>        
+	        </html-to-xml>
+	    </var-def>
+
+	
+	    <var-def name="listContinent">
+	        <xpath expression="//div[@class='itemtext']/h4/text()">
+		    	<var name="countriesListPage" />
+	        </xpath>                 
+	    </var-def>
+	    
+	    <loop item="continentName" index="i" filter="unique" empty="yes">
+	    	<list>
+	        	<var name="listContinent"/>
+	        </list>
+	        <body>
+	        	<empty>	        	
+		        	<var-def name="standartContinentName">
+					    <case>
+					        <if condition = '${continentName.toString().trim().equals("Ближний и Средний Восток")}' >
+					            <text>Азия</text>
+					        </if>
+					        <else>
+					        	<case>
+					        		<if condition = '${continentName.toString().trim().equals("Центральная Америка")}' >
+					            		<text>Северная Америка</text>
+					        		</if>
+					        		<else>
+					        			<template>${continentName.toString().trim()}</template>
+					       	 		</else>
+					        	</case>
+					        </else>
+					    </case>
+		        	</var-def> 
+		        	
+		        	
+		        	<var-def name="listCountry">
+			        	<xpath expression='//div[@class="itemtext"]/h4[text() = "${continentName}"]/following-sibling::a[node() = //div[@class="itemtext"]/h4[text() = "${continentName}"]/following-sibling::br[2]/preceding-sibling::a]/@href'>
+				            <var name="countriesListPage" />
+			        	</xpath>  
+		        	</var-def> 
+	        	</empty>
+	        	<loop item="link" index="i" filter="unique" empty="yes">                
+			        <list>
+			               <var name="listCountry"/>
+			        </list>
+			        <body>
+			        	<empty>
+				            <var-def name="siteName">
+				                http://www.country.alltravels.com.ua
+				            </var-def>
+				            
+							<var-def name="countryContent">
+				                    <html-to-xml>
+				                        <http url="${sys.fullUrl(siteName, link)}" charset="UTF-8"/>
+				                    </html-to-xml>               
+				            </var-def> 
+				
+				
+				            <var-def name="aboutCountry">
+				                <xpath expression="//div[@class='itemtext']/p | //div[@class = 'itemtext']/table[2]/tbody/tr[2]/td/text()">
+				                    <var name="countryContent" />
+				                </xpath>                 
+				            </var-def>    
+				
+				            <var-def name="nameCountry">
+				                <xpath expression="//div[@class='pagetitle']//h1/text()">
+				                    <var name="countryContent" />
+				                </xpath>                 
+				            </var-def>    
+				            <var-def name="returnValue">
+				              <text>type</text>
+				              <text>Country</text>
+				                                                    
+				              <text>name</text>
+				              <template>${nameCountry.toString()}</template>
+				              
+				              <text>continent_name</text>
+				              <template>${standartContinentName.toString()}</template>
+				                                                    
+				              <text>description</text>
+				              <template>${aboutCountry.toString()}</template>
+				              <text>source_url</text>
+				              <template>${sourceUrl.toString()}</template>
+				            </var-def>
+				                                                            
+				            <var-def name="addToDB">
+				                1
+				            </var-def>
+				            
+				            <var-def name="allCity">
+				                <xpath expression="//div[@class='itemtext']/a/@href">
+				                    <html-to-xml>
+				                        <http url='${sys.fullUrl(siteName, link+"city/")}' charset="UTF-8"/>
+				                    </html-to-xml>
+				                </xpath>                 
+				            </var-def>
+			            </empty>
+			            <loop item="citylink" index="i" filter="unique" empty="yes">
+			                <list>
+			                       <var name="allCity"/>
+			                </list>
+			                <body>
+			                	<empty>
+				                <var-def name="cityContent">
+				                    <html-to-xml>
+				                        <http url="${citylink}" charset="UTF-8"/>
+				                    </html-to-xml>               
+					            </var-def>
+				            
+			                    <var-def name="aboutCity">
+			                        <xpath expression="//div[@class='itemtext']/p">
+			                            <var name="cityContent"/>
+			                        </xpath>
+			                    </var-def>
+			                    <var-def name="nameCity">
+			                        <xpath expression="//div[@class='pagetitle']//h1/text()">
+			                            <var name="cityContent"/>
+			                        </xpath>                 
+			                    </var-def>    
+			                    <var-def name="nameCountryOfCity">
+			                        <xpath expression="//div[@class='pagetitle']//a[text() = 'Страны']/following-sibling::a/@title">
+			                            <var name="cityContent"/>
+			                        </xpath>                 
+			                    </var-def>
+			                    
+			                    <var-def name="cityImages">
+				                    <loop item="imageUrl" index="i" filter="unique" empty="yes">
+				                    	<list>
+					                        <xpath expression="//div[@class='itemtext']//img/@src">
+					                            <var name="cityContent"/>
+					                        </xpath>
+				                    	</list>
+				                    	<body>
+				                    		<empty>
+				                    		<!-- validate city image -->
+				                    		<empty>
+				                    		<var-def name="checkUrl">
+        										<http url="${sys.fullUrl(imageUrl, blank)}"/>
+											</var-def>
+											</empty>
+											<script language="javascript">
+											    sys.defineVariable("status", http.statusCode, true);
+											</script>
+											<case>
+												<if condition='${status.toString().equals("200.0")}'>
+						                    		<script return='imageUrl.toString() + &quot;;&quot;'/>
+												</if>
+											</case>											
+				                    		<!-- end validating-->											
+				                    		</empty>
+				                    	</body>
+									</loop>
+			                     </var-def>
+			                    <var-def name="returnValue">
+			                        <text>type</text>
+			                        <text>City</text>
+			                                                            
+			                        <text>name</text>
+			                        <template>${nameCity.toString()}</template>
+			                                                            
+			                        <text>description</text>
+			                        <template>${aboutCity.toString()}</template>
+			                        
+			                        <text>country_name</text>
+			                        <template>${nameCountryOfCity.toString()}</template>
+
+			                        <text>images</text>
+			                        <template>${cityImages.toString()}</template>
+			                        
+			                        <text>source_url</text>
+			             			<template>${sourceUrl.toString()}</template>
+			                    </var-def>
+			                    <var-def name="addToDB">
+			                      1
+			                    </var-def>
+			                    
+			                    <var-def name = "citySightPage">
+		                            <html-to-xml>
+		                                <http url='${sys.fullUrl(citylink,"sight/")}' charset="UTF-8"/>
+		                            </html-to-xml>
+			                    </var-def>			                    
+			                    <var-def name = "hash6after">
+			                        <xpath expression="//div[@class='itemtext']/h6[text() = 'Музеи']/following-sibling::h6">
+			                           	<var name = "citySightPage" />
+			                        </xpath> 
+			                    </var-def>
+			                    <case>
+			                        <if condition = "${hash6after.toString().isEmpty()}">
+			                            <var-def name = "cityMusemLinks">
+			                                <xpath expression="//div[@class='itemtext']/h6[text() = 'Музеи']/following-sibling::a/@href">
+			                                    <var name = "citySightPage" />
+			                                </xpath>
+			                            </var-def>
+			
+			                        </if>
+			                        <else>
+			                            <var-def name = "cityMusemLinks">
+			                                <xpath expression="//div[@class='itemtext']/h6[text() = 'Музеи']/following-sibling::a[node() = //div[@class='itemtext']/h6[text() = 'Музеи']/following-sibling::h6[1]/preceding-sibling::a]/@href">
+			                                    <var name = "citySightPage" />
+			                                </xpath>
+			                            </var-def>
+			                        </else>
+			                    </case>
+			                    <loop item="museumLink" index="i" filter="unique" empty="yes">
+			                        <list>
+			                               <var name="cityMusemLinks"/>
+			                        </list>
+			                        <body>
+			                        	<var-def name = "museumContent">
+				                            <html-to-xml>
+				                                <http url="${museumLink}" charset="UTF-8"/>
+				                            </html-to-xml>
+					                    </var-def>	
+			                            <var-def name="aboutMuseum">
+			                                <xpath expression="//div[@class='itemtext']/p">
+			                                    <var name="museumContent"/>
+			                                </xpath>                 
+			                            </var-def>    
+			                            
+			                            <!-- validate picture of museum -->
+			                            <var-def name="validatePictureMuseum">
+			                                <xpath expression="//div[@class='itemtext']//img/@src">
+			                                    <var name="museumContent"/>
+			                                </xpath> 
+			                            </var-def>
+										<script language="javascript">
+										    sys.defineVariable("status", http.statusCode, true);
+										</script>
+										<case>
+											<if condition='${status.toString().equals("200.0")}'>
+							                    <var-def name="pictureMuseum">
+					                                <xpath expression="//div[@class='itemtext']//img/@src">
+			    		                                <var name="museumContent"/>
+			            		                    </xpath> 
+			                    		        </var-def>
+											</if>
+											<else>
+												<var-def name="pictureMuseum"></var-def>
+											</else>
+										</case>
+										<!-- end validating -->
+			                            
+			                            <var-def name="nameMuseum">
+			                                <xpath expression="//div[@class='pagetitle']//h1/text()">
+			                                    <var name="museumContent"/>
+			                                </xpath> 
+			                            </var-def>
+			                            <var-def name="nameCityOfMuseum">
+			                                <xpath expression="//div[@class='pagetitle']//a[text() = 'Страны']/following-sibling::a[2]/@title">
+			                                    <var name="museumContent"/>
+			                                </xpath>                 
+			                            </var-def>    
+			                            <var-def name="returnValue">    
+			                                <text>type</text>
+			                                      <text>Museum</text>                 
+			                                 <text>name</text>
+			                                      <template>${nameMuseum.toString()}</template>                        
+			                                  <text>description</text>
+			                                      <template>${aboutMuseum.toString()}</template>
+			                                  <text>images</text>
+			                                      <template>${pictureMuseum.toString()}</template>    
+			                                  <text>city_name</text>
+			                                     <template>${nameCityOfMuseum.toString()}</template>
+			                                  <text>source_url</text>
+			             						 <template>${sourceUrl.toString()}</template>
+			                            </var-def>
+			                            <var-def name="addToDB">
+			                                  1
+			                            </var-def>
+			                        </body>
+			                    </loop>
+			                    <var-def name = "hash6after">
+			                        <xpath expression="//div[@class='itemtext']/h6[text() = 'Достопримечательности']/following-sibling::h6">
+			                            <var name = "citySightPage" />
+			                        </xpath> 
+			                    </var-def>
+			                    <case>
+			                        <if condition = "${hash6after.toString().isEmpty()}">
+			                            <var-def name = "ArchAttractionLinks">
+			                                <xpath expression="//div[@class='itemtext']/h6[text() = 'Достопримечательности']/following-sibling::a/@href">
+			                                    <var name = "citySightPage" />
+			                                </xpath>
+			                            </var-def>
+			                        </if>
+			                        <else>
+			                            <var-def name = "ArchAttractionLinks">
+			                                <xpath expression="//div[@class='itemtext']/h6[text() = 'Достопримечательности']/following-sibling::a[node() = //div[@class='itemtext']/h6[text() = 'Достопримечательности']/following-sibling::h6[1]/preceding-sibling::a]/@href">
+			                                    <var name = "citySightPage" />
+			                                </xpath>
+			                            </var-def>
+			                        </else>
+			                    </case>
+			                    <loop    item="ArchAttractionLink" index="i" filter="unique" empty="yes">
+			                        <list>
+			                               <var name="ArchAttractionLinks"/>
+			                        </list>
+			                        <body>
+			                        	<empty>
+			                        	<var-def name = "ArchAttractionContent">
+		                                    <html-to-xml>
+		                                        <http url="${ArchAttractionLink}" charset="UTF-8"/>
+		                                    </html-to-xml>
+			                            </var-def>
+			                            <var-def name="aboutArchAttraction">
+			                                <xpath expression="//div[@class='itemtext']/p">
+			                                   	<var name="ArchAttractionContent"/>
+			                                </xpath>                 
+			                            </var-def>    
+			                            
+			                            <!-- validate picture of arch attraction-->
+			                            <var-def name="validatePictureArchAttraction">
+			                                <xpath expression="//div[@class='itemtext']//img/@src">
+			                                    <var name="ArchAttractionContent"/>
+			                                </xpath> 
+			                            </var-def>
+										<script language="javascript">
+										    sys.defineVariable("status", http.statusCode, true);
+										</script>
+										<case>
+											<if condition='${status.toString().equals("200.0")}'>
+							                    <var-def name="pictureArchAttraction">
+					                                <xpath expression="//div[@class='itemtext']//img/@src">
+					                                    <var name="ArchAttractionContent"/>
+			    		                            </xpath> 
+			            		                </var-def>
+											</if>
+											<else>
+												<var-def name="pictureArchAttraction"/>
+											</else>
+										</case>
+										<!-- end validating -->
+										
+			                            <var-def name="nameArchAttraction">
+			                                <xpath expression="//div[@class='pagetitle']//h1">
+			                                    <var name="ArchAttractionContent"/>
+			                                </xpath> 
+			                            </var-def>
+			                            <var-def name="nameCityOfArchAttraction">
+			                                <xpath expression="//div[@class='pagetitle']//a[text() = 'Страны']/following-sibling::a[2]/@title">
+			                                    <var name="ArchAttractionContent"/>
+			                                </xpath>                 
+			                            </var-def>    
+			                            <var-def name="returnValue">    
+			                                <text>type</text>
+			                                      <text>ArchAttraction</text>                 
+			                                 <text>name</text>
+			                                      <template>${nameArchAttraction.toString()}</template>                        
+			                                  <text>description</text>
+			                                      <template>${aboutArchAttraction.toString()}</template>
+			                                  <text>images</text>
+			                                      <template>${pictureArchAttraction.toString()}</template>    
+			                                  <text>city_name</text>
+			                                     <template>${nameCityOfArchAttraction.toString()}</template>
+			                                  <text>source_url</text>
+			             						 <template>${sourceUrl.toString()}</template>
+			                            </var-def>
+			                                                           
+			                            <var-def name="addToDB">
+			                                  1
+			                            </var-def>
+			                            </empty>
+			                        </body>
+			                    </loop>
+			        
+			                    <var-def name = "hash6after">
+			                        <xpath expression="//div[@class='itemtext']/h6[text() = 'Жизнь людей']/following-sibling::h6">
+			                            <var name = "citySightPage" />
+			                        </xpath> 
+			                    </var-def>
+			
+			                    <case>
+			                        <if condition = "${hash6after.toString().isEmpty()}">
+			                            <var-def name = "entertainmentLinks">
+			                                <xpath expression="//div[@class='itemtext']/h6[text() = 'Жизнь людей']/following-sibling::a/@href">
+			                                    <var name = "citySightPage" />
+			                                </xpath>
+			                            </var-def>
+			                        </if>
+			                        <else>
+			                            <var-def name = "entertainmentLinks">
+			                                <xpath expression="//div[@class='itemtext']/h6[text() = 'Жизнь людей']/following-sibling::a[node() = //div[@class='itemtext']/h6[text() = 'Жизнь людей']/following-sibling::h6[1]/preceding-sibling::a]/@href">
+			                                    <var name = "citySightPage" />
+			                                </xpath>
+			                            </var-def>
+			                        </else>
+			                    </case>
+			                    <loop    item="entertainmentLink" index="i" filter="unique" empty="yes">
+			                        <list>
+			                               <var name="entertainmentLinks"/>
+			                        </list>
+			                        <body>
+			                            <var-def name="entertainmentContent">
+			                                <html-to-xml>
+		                                        <http url="${entertainmentLink}" charset="UTF-8"/>
+		                                    </html-to-xml>              
+			                            </var-def>			                        	
+			                            <var-def name="aboutentertainment">
+			                                <xpath expression="//div[@class='itemtext']/p">
+			                                    <var name="entertainmentContent"/>
+			                                </xpath>                 
+			                            </var-def>    
+			                            
+			                            <!-- validate picture of entertainment -->
+			                            <var-def name="validatePictureEntertainment">
+			                                <xpath expression="//div[@class='itemtext']//img/@src">
+			                                    <var name="entertainmentContent"/>
+			                                </xpath> 
+			                            </var-def>
+										<script language="javascript">
+										    sys.defineVariable("status", http.statusCode, true);
+										</script>
+										<case>
+											<if condition='${status.toString().equals("200.0")}'>
+							                    <var-def name="pictureentertainment">
+					                                <xpath expression="//div[@class='itemtext']//img/@src">
+					                                    <var name="entertainmentContent"/>
+					                                </xpath> 
+			    		                        </var-def>
+											</if>
+											<else>
+												<var-def name="pictureentertainment"></var-def>
+											</else>
+										</case>
+										<!-- end validating -->
+			                            
+			                            
+			                            <var-def name="nameentertainment">
+			                                <xpath expression="//div[@class='pagetitle']//h1">
+			                                    <var name="entertainmentContent"/>
+			                                </xpath> 
+			                            </var-def>
+			                            <var-def name="nameCityOfentertainment">
+			                                <xpath expression="//div[@class='pagetitle']//a[text() = 'Страны']/following-sibling::a[2]/@title">
+			                                    <var name="entertainmentContent"/>
+			                                </xpath>                 
+			                            </var-def>    
+			                            <var-def name="returnValue">    
+			                                <text>type</text>
+			                                	<text>Entertainment </text>                 
+			                                <text>name</text>
+			                                	<template>${nameentertainment.toString()}</template>                        
+			                                <text>description</text>
+			                                	<template>${aboutentertainment.toString()}</template>
+			                                <text>images</text>
+			                                	<template>${pictureentertainment.toString()}</template>    
+			                                <text>city_name</text>
+			                                	<template>${nameCityOfentertainment.toString()}</template>
+			                                <text>source_url</text>
+			             					<template>${sourceUrl.toString()}</template>
+			                            </var-def>
+			                            <var-def name="addToDB">
+			                                  1
+			                            </var-def>
+			                        </body>
+			                    </loop>
+			                    </empty>
+			                </body>
+			            </loop>
+			        </body>
+			    </loop>
+	        	
+	        </body>	
+	    </loop>
+	</empty>
+</config>

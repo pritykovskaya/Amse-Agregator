@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/516/trunk/src/java/ru/amse/agregator/utils
+END
+Tools.java
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/402/trunk/src/java/ru/amse/agregator/utils/Tools.java
+END
+HtmlTools.java
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/414/trunk/src/java/ru/amse/agregator/utils/HtmlTools.java
+END
+XmlFileFilter.java
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/402/trunk/src/java/ru/amse/agregator/utils/XmlFileFilter.java
+END
+ToolsForWorkWithFiles.java
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/516/trunk/src/java/ru/amse/agregator/utils/ToolsForWorkWithFiles.java
+END

@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/598/trunk/src/java/ru/amse/agregator/gui/model
+END
+Cell.java
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/389/trunk/src/java/ru/amse/agregator/gui/model/Cell.java
+END
+RightMenuItem.java
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/386/trunk/src/java/ru/amse/agregator/gui/model/RightMenuItem.java
+END
+MenuItem.java
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/368/trunk/src/java/ru/amse/agregator/gui/model/MenuItem.java
+END
+AttractionManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/598/trunk/src/java/ru/amse/agregator/gui/model/AttractionManager.java
+END
+DescriptionModel.java
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/340/trunk/src/java/ru/amse/agregator/gui/model/DescriptionModel.java
+END
+Attraction.java
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/!svn/ver/529/trunk/src/java/ru/amse/agregator/gui/model/Attraction.java
+END
+UniversalModel.java
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/340/trunk/src/java/ru/amse/agregator/gui/model/UniversalModel.java
+END
+LeftMenuItem.java
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/!svn/ver/368/trunk/src/java/ru/amse/agregator/gui/model/LeftMenuItem.java
+END
+Record.java
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/!svn/ver/389/trunk/src/java/ru/amse/agregator/gui/model/Record.java
+END

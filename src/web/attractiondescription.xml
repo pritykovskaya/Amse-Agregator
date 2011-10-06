@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="attractiondescription.xsl"?>
+<page>
+        <!-- @todo в ялеты как-то нужно передавать параметры чтобы получать для каждой страницы специфичный контент. -->
+    <yalet id="attractionTopBlock" />
+    <yalet id="countryTopBlock" />
+    <yalet id="rankingBlock"/>
+    <yalet id="continentSelectBlock" /> 
+    <yalet id="showAttractionDesc"/>
+    <yalet id="maps"/>
+    <yalet id="mapsTemp"/>
+    <yalet id="add"/>
+    <yalet id="login" />
+</page>

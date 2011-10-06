@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/563/trunk/src/java/ru/amse/agregator/quality/clusterization/metric
+END
+Metric.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/!svn/ver/161/trunk/src/java/ru/amse/agregator/quality/clusterization/metric/Metric.java
+END
+StandardMetric.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/!svn/ver/563/trunk/src/java/ru/amse/agregator/quality/clusterization/metric/StandardMetric.java
+END
+NameMetric.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/!svn/ver/316/trunk/src/java/ru/amse/agregator/quality/clusterization/metric/NameMetric.java
+END

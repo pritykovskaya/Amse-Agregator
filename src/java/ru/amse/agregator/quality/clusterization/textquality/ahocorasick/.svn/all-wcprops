@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/!svn/ver/558/trunk/src/java/ru/amse/agregator/quality/clusterization/textquality/ahocorasick
+END
+State.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/!svn/ver/528/trunk/src/java/ru/amse/agregator/quality/clusterization/textquality/ahocorasick/State.java
+END
+SearchResult.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/!svn/ver/528/trunk/src/java/ru/amse/agregator/quality/clusterization/textquality/ahocorasick/SearchResult.java
+END
+Queue.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/!svn/ver/558/trunk/src/java/ru/amse/agregator/quality/clusterization/textquality/ahocorasick/Queue.java
+END
+TestAhocorasick.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/!svn/ver/528/trunk/src/java/ru/amse/agregator/quality/clusterization/textquality/ahocorasick/TestAhocorasick.java
+END
+AhoCorasick.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/!svn/ver/528/trunk/src/java/ru/amse/agregator/quality/clusterization/textquality/ahocorasick/AhoCorasick.java
+END
+Searcher.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/!svn/ver/528/trunk/src/java/ru/amse/agregator/quality/clusterization/textquality/ahocorasick/Searcher.java
+END

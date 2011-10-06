@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config scriptlang="default_script_lang">
+
+<var-def name="site">
+	http://ru.worldpoi.info/pois
+</var-def>
+
+<!-- biuld continent list -->
+<var-def name="continentList">
+	<xpath expression="//h2/a/@href">
+		<html-to-xml>
+			<http url="http://ru.worldpoi.info/pois"/>
+		</html-to-xml>
+	</xpath>
+</var-def>
+
+<!-- begin cycle by continents -->
+<loop item="continent" index="i" empty="yes">
+	<list>
+		<var name="continentList"/>
+	</list>
+	<body>
+	<empty>
+		<var-def name="continentPage">
+			<html-to-xml>
+				<http url="${sys.fullUrl(site, continent);}"/>
+			</html-to-xml>				
+		</var-def>
+		
+		<!-- biuld list of countries in "i" continent -->
+		<var-def name="countryList">
+			<xpath expression="//div[@class='column25perc']/h2/a/@href">
+				<var name="continentPage"/>
+			</xpath>
+		</var-def>
+		
+		<!-- begin build real continent name -->
+		<var-def name="realContinent">		
+			<xpath expression="//div[@class='mapTitle']/h2/b">
+				<var name="continentPage"/>
+			</xpath>
+		</var-def>
+		<script language="javascript">
+			<![CDATA[
+				var str = realContinent.toString();
+				var realCont = str.replace("<b>", "").replace("</b>", "");
+				if (realCont.equals("Антарктика") || realCont.equals("Океания")) {
+					realCont = "Австралия и Океания";
+				}
+			]]>
+			sys.defineVariable("returnContinent", realCont, true);
+		</script>
+		<!-- end build real continent name -->
+
+		<!-- begin cycle by countries in "i" continent -->
+			<loop item="country" index="k" empty="yes">
+				<list>
+					<var name="countryList"/>
+				</list>
+				<body>
+				<empty>
+				
+				<var-def name="countryPage">
+					<html-to-xml>
+						<http url="${sys.fullUrl(site, country);}"/>
+					</html-to-xml>				
+				</var-def>
+				
+				<!-- begin build real country name -->
+				<var-def name="realCountry">		
+					<xpath expression="//div[@class='breadCrumbs']/b">
+						<var name="countryPage"/>
+					</xpath>
+				</var-def>
+			
+				<script language="javascript">
+					<![CDATA[
+						var str = realCountry.toArray();
+						var s = str[0].toString();
+						var iBegin = s.toString().indexOf("<");
+						var iEnd = s.toString().indexOf(">");
+						var real = s.substring(iEnd, s.length() - 1);
+						var iBegin = real.indexOf("<");
+						if (iBegin > 0)
+							real = real.substring(1, iBegin);
+					]]>
+					sys.defineVariable("returnCountry", real, true);
+				</script>
+			
+				<!-- end build real country name -->				
+			
+				<!--biuld list by cities in "k" country in "i" continent-->
+				<var-def name="cityList">
+					<xpath expression="//div[@id='test']/a/@href">
+						<var name="countryPage"/>
+					</xpath>
+				</var-def>
+
+				<!-- begin countryinfo return -->
+				<var-def name="returnValue">
+					<text>type</text>
+					<template>Country</template>
+									
+					<text>continent_name</text>
+					<template>${returnContinent.toString()}</template>
+
+					<text>name</text>
+					<template>${returnCountry.toString()}</template>
+									
+					<text>source_url</text>
+					<template>${sys.fullUrl(site, country).toString()}</template>
+				</var-def>
+
+				<var-def name="addToDB">1</var-def>
+				<!-- begin country city info return -->
+	
+				<!-- begin cycle by cities in "k" country in "i" continent -->
+				<loop item="city" index="l" empty="yes">
+					<list>
+						<var name="cityList"/>
+					</list>
+					
+					
+					<body>
+					<empty>
+
+						<!-- begin build real cities name -->
+						<var-def name="realCity">		
+							<xpath expression="//div[@class='breadCrumbs']/b">
+								<html-to-xml>
+									<http url="${sys.fullUrl(site, city);}"/>
+								</html-to-xml>				
+							</xpath>
+						</var-def>
+						<script language="javascript">
+							<![CDATA[
+								var str = realCity.toArray();
+								var s = str[0].toString();
+								var iBegin = s.toString().indexOf("<");
+								var iEnd = s.toString().indexOf(">");
+								var real = s.substring(iEnd, s.length() - 1);
+								var iBegin = real.indexOf("<");
+								if (iBegin > 0)
+									real = real.substring(1, iBegin);
+							]]>
+							sys.defineVariable("returnCity", real, true);
+						</script>
+						<!-- end build real cities name -->				
+
+						<!-- biuld list of pois in "l" city in "k" country in "i" continent -->
+						<var-def name="poiList">
+							<xpath expression="//div[@class='name']/a/@href">
+								<html-to-xml>
+									<http url='${sys.fullUrl(site, city + "pois");}'></http>
+								</html-to-xml>
+							</xpath>
+						</var-def>
+
+						<!-- begin city info return -->
+						<var-def name="returnValue">
+							<text>type</text>
+							<template>City</template>
+											
+							<text>continent_name</text>
+							<template>${returnContinent.toString()}</template>
+		
+							<text>country_name</text>
+							<template>${returnCountry.toString()}</template>
+
+							<text>name</text>
+							<template>${returnCity.toString()}</template>
+									
+							<text>source_url</text>
+							<template>${sys.fullUrl(site, city).toString()}</template>
+						</var-def>
+
+						<var-def name="addToDB">1</var-def>
+						<!-- begin city info return -->
+						
+						<!-- begin cycle by pois in "l" city in "k" country in "i" continent -->
+						<loop item="poi" index="m" empty="yes">
+							<list>
+								<var name="poiList"/>
+							</list>
+							
+							<body>
+							<empty>
+							<try>
+								<body>
+								<var-def name="poiPage">
+									<html-to-xml>
+										<http url="${sys.fullUrl(site, poi);}"/>
+									</html-to-xml>				
+								</var-def>
+								
+								<!-- begin build real pois name -->
+								<var-def name="realPoi">
+									<xpath expression="//div[@class='breadCrumbs']/b">
+										<var name="poiPage"/>
+									</xpath>							
+								</var-def>
+								
+								<script language="javascript">
+									<![CDATA[
+										var str = realPoi.toArray();
+										var s = str[0].toString();
+										var real;
+										if (s != "no real poi name") {
+											var iBegin = s.toString().indexOf("<");
+											var iEnd = s.toString().indexOf(">");
+											real = s.substring(iEnd, s.length() - 1);
+											var iBegin = real.indexOf("<");
+											if (iBegin > 0)
+												real = real.substring(1, iBegin);
+										} else {
+											real = 'No POI name';
+										}
+									]]>
+									sys.defineVariable("returnPoiName", real, true);
+								</script>
+								<!-- end build real pois name -->									
+								
+								<var-def name="coordinates">
+									<xpath expression="//div[@class='position']">
+										<var name="poiPage"/>
+									</xpath>
+								</var-def>
+								
+								<!-- begin clearing coordinates -->
+								<script language="javascript">
+									<![CDATA[
+										var source = coordinates.toArray();
+										var i = 0;
+										var coord = new Array();
+										while (i < source.length) {
+											var j = source[i].toString().indexOf("</b>");
+											if (j >= 0) {
+												var str = source[i].toString().substring(j, source[i].toString().length() - 1);
+												var jj = str.indexOf(";");
+												str = str.substring(jj + 4, str.length() - 1);
+												var xCoord = str.substring(0, str.indexOf("°"));
+												str = str.substring(str.indexOf(" "), str.length() - 1);
+												var yCoord = str.substring(1, str.indexOf("°"));
+												coord.push(xCoord.replaceAll(',', '.'));
+												coord.push(yCoord.replaceAll(',', '.'));
+											}
+											i++;
+										}
+									]]>
+									sys.defineVariable("returnCoordinates", coord.join(";"), true);
+								</script>
+								<!-- end clearing coordinates -->								
+								
+								<var-def name="descriptionA">
+									<xpath expression="//div[@class='descrA']">
+										<var name="poiPage"/>
+									</xpath>
+								</var-def>
+								
+								<var-def name="descriptionB">
+									<xpath expression="//div[@class='descrB']">
+										<var name="poiPage"/>
+									</xpath>
+								</var-def>
+								
+								<!-- begin concat descriptions -->
+								<script language="javascript">
+									<![CDATA[
+										var descA = descriptionA.toArray();
+										var descB = descriptionB.toArray();
+										var desc = "";
+										var k = 0;
+										while (k < descA.length) {
+											desc = desc + descA[k].toString() + "\n";
+											k++;
+										}
+										k = 0;
+										while (k < descB.length) {
+											desc = desc + descB[k].toString() + "\n";
+											k++;
+										}
+
+										var k = desc.toString().indexOf("Редактировать?");
+										if (k >= 0) {
+											desc = desc.substring(0, k);
+										}
+									]]>
+									sys.defineVariable("returnDescription", desc, true);
+								</script>
+								<!-- end concat descriptions -->								
+																
+								<!-- validate poi picture-->
+		                        <var-def name="validatePoiImage">
+			                        <xpath expression="//table[@id='tMapAndImg']/tbody/tr/td/div/a/img/@src">
+										<var name="poiPage"/>
+									</xpath>
+					            </var-def>
+								<script language="javascript">
+								    sys.defineVariable("status", http.statusCode, true);
+								</script>
+								<case>
+									<if condition='${status.toString().equals("200.0")}'>
+						                 <var-def name="image">
+											<var name="validatePoiImage"/>
+										</var-def>
+									</if>
+									<else>
+										<var-def name="image"/>
+									</else>
+								</case>
+								<!-- end validating -->
+								
+								<var-def name="returnValue">
+									<text>type</text>
+									<template>ArchAttraction</template>
+									
+									<text>continent_name</text>
+									<template>${returnContinent.toString()}</template>
+									
+									<text>country_name</text>
+									<template>${returnCountry.toString()}</template>
+
+									<text>city_name</text>
+									<template>${returnCity.toString()}</template>
+
+									<text>name</text>
+									<template>${returnPoiName.toString()}</template>
+									
+									<text>coordinates</text>
+									<template>${returnCoordinates.toString().replaceAll(",",".").trim()}</template>
+	
+									<text>description</text>
+									<template>${returnDescription.toString()}</template> 
+			
+									<text>images</text>
+									<template>${image.toString()}</template>
+									
+									<text>source_url</text>
+									<template>${sys.fullUrl(site, poi).toString()}</template>
+								</var-def>
+		
+								<var-def name="addToDB">1</var-def>
+								</body>
+							
+								<catch>
+								</catch>
+							</try>
+							</empty>
+							</body>
+						</loop>
+						<!-- end cycle by pois in "l" city in "k" country in "i" continent -->
+					</empty>
+					</body>
+				</loop>
+				<!-- end cycle by pois in "l" city in "k" country in "i" continent-->
+			</empty>
+			</body>
+		</loop>	
+		<!-- end cycle by cities in "k" country in "i" continent -->
+	</empty>
+	</body>
+</loop>
+<!-- end cycle by continents -->
+
+</config>

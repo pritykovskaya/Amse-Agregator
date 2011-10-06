@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 28
+/svn/!svn/ver/394/trunk/libs
+END
+junit-4.0.jar
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/145/trunk/libs/junit-4.0.jar
+END
+lucene-core-3.0.2.jar
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/145/trunk/libs/lucene-core-3.0.2.jar
+END
+mongo-2.3.jar
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/212/trunk/libs/mongo-2.3.jar
+END

@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/300/trunk/libs/xfreshlibs/spring
+END
+spring-context.jar
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/300/trunk/libs/xfreshlibs/spring/spring-context.jar
+END
+spring-beans.jar
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/300/trunk/libs/xfreshlibs/spring/spring-beans.jar
+END
+spring-core.jar
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/300/trunk/libs/xfreshlibs/spring/spring-core.jar
+END
+spring-mock.jar
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/300/trunk/libs/xfreshlibs/spring/spring-mock.jar
+END
+spring-web.jar
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/300/trunk/libs/xfreshlibs/spring/spring-web.jar
+END

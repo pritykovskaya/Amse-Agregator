@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config scriptlang="default_script_lang">
+
+	<var-def name="loadedData">
+			<xpath expression="//div[@id='content']">
+				<html-to-xml outputtype="pretty">
+				    <http url="${linkToScrap}"/>
+				</html-to-xml>
+			</xpath>		
+	</var-def>
+	
+	<var-def name="currentCityName">
+			<xpath expression="//h1">
+				<var name="loadedData"/>
+			</xpath>	
+	</var-def>
+	
+	<var-def name="currentCityImage">
+			<xpath expression="//a/img[@class='thumbimage']//@src">
+				<var name="loadedData"/>
+			</xpath>	
+	</var-def>
+	
+	<var-def name="currentCityLatitude">
+			<xpath expression="//span[@class='plainlinksneverexpand']//*/span[@class='geo-dms']/span[@class='geo-lat']">
+				<var name="loadedData"/>
+			</xpath>	
+	</var-def>
+	
+	<var-def name="currentCityLongitude">
+			<xpath expression="//span[@class='plainlinksneverexpand']//*/span[@class='geo-dms']/span[@class='geo-lon']">
+				<var name="loadedData"/>
+			</xpath>	
+	</var-def>
+	
+	<var-def name="currentCityDescription1">
+		<xpath expression="//div[@id='bodyContent']/p[1]">
+				<var name="loadedData"/>
+			</xpath>	
+	</var-def>
+	
+	<var-def name="currentCityDescription2">
+		<xpath expression="//div[@id='bodyContent']/p[2]">
+				<var name="loadedData"/>
+			</xpath>	
+	</var-def>
+			
+	<script language="javascript">
+		sys.defineVariable("cityNamesOut",currentCityName.toString(),true);
+		sys.defineVariable("cityImagesOut",currentCityImage.toString(),true);
+		sys.defineVariable("cityLatitudesOut",currentCityLatitude.toString(),true);
+		sys.defineVariable("cityLongitudesOut",currentCityLongitude.toString(),true);
+		sys.defineVariable("cityDescriptionsOut",currentCityDescription1.toString().concat(
+												currentCityDescription2.toString()),true);
+	</script>
+	</empty>
+	
+</config>

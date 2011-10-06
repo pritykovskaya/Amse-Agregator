@@ -1,0 +1,394 @@
+html, body {
+    margin: 0px;
+    padding: 0px;
+    font-size: 12pt;
+    font-family: Arial, Verdana,  sans-serif;
+    color: #414141;
+    height: 100%;
+    width: 100%;
+}
+
+form, input {
+    margin:0;
+    padding:0
+}
+
+a {
+    font-family: "Arial";
+    font-size: 13px;
+    color: #474747;
+    text-decoration: underline;
+}
+
+.extTable {
+    height: 100%;
+    width: 100%;
+    border:5px solid #ffffff;
+    background: #ffffff;
+    vertical-align: top;
+}
+
+
+.extTableTD{
+    vertical-align: top;
+    border:5px solid #34406f;
+    padding: 5px;
+    width: 100%;
+    text-align: center;
+}
+
+.header, .header td{
+    border:0px;
+    padding: 0px;
+    border-spacing: 0px;
+}
+
+.header{
+    width: 100%;
+}
+
+#logo_p1{
+    background: url("images/logo_p1.jpg") no-repeat;
+    width:151px;
+    height:36px;
+    white-space: nowrap;
+}
+
+#logo_p2{
+    background: url("images/logo_p2.jpg") no-repeat;
+    width:151px;
+    height:41px;
+    white-space: nowrap;
+}
+
+#logo_p3{
+    background: url("images/logo_p3.jpg") no-repeat;
+    width:61px;
+    height:41px;
+    white-space: nowrap;
+}
+
+#logo_p3, #logo_p2, #logo_p1{
+    cursor: pointer;
+}
+
+#linksContainer{
+    text-align: right;
+}
+
+#linksTable {
+    border-top: 4px solid #474747;
+}
+
+#linksTable td{
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: center;
+}
+
+#linksTable a{
+    font-family: "Arial";
+    font-size: 11pt;
+    font-weight: bold;
+    text-decoration: none;
+    color: #3a4154;
+}
+
+#linksTable a:hover{
+    color: #777777;
+}
+
+.search_checkbox {
+    font-family: "Arial";
+    font-size: 11pt;
+    font-weight: bold;
+    text-decoration: none;
+    color: #3a4154;
+}
+
+#searchTable td{
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: center;
+}
+
+#searchContainer{
+    width: 100%;
+    text-align: right;
+}
+
+.searchButtonTd{
+    width:100px;
+    text-align: center;
+}
+
+a.buttonLink{
+    font-family: "Arial";
+    font-size: 12pt;
+    font-weight: bold;
+    text-decoration: none;
+    color: #3a4154;
+    cursor: pointer;
+}
+
+.addButton{
+    width:100px;
+    text-align: center;
+}
+
+
+
+
+#search {
+    width: 99%;
+    border: 1px solid #474747;
+    font-size: 13pt;
+    color: #777777;
+}
+
+.pageContainer{
+    width: 100%;
+    border: 0;
+    padding: 0;
+    border-spacing: 0;
+    margin-top: 15px;
+}
+
+#leftColomn{
+    text-align: left;
+    vertical-align: top;
+    width: 200px;
+}
+
+#rightColomn{
+    width: 240px;
+    vertical-align: top;
+    padding-left: 20px;
+}
+
+#centerColomn{
+    vertical-align: top;
+}
+
+.simpleTop, .simpleTopHeader, .simpleTopItemTitle, .simpleTopItemContent{
+    border: 0;
+    padding: 0;
+    border-spacing: 0;
+}
+
+.simpleTopHeader, .attractionsTopHeader{
+    font-family: "Arial";
+    font-size: 13px;
+    font-weight: bold;
+    color: #000000;
+}
+
+.attractionsTopHeader{
+    text-align: right;
+}
+
+.simpleTopItemTitle, .simpleTopItemTitle a{
+    font-family: "Arial";
+    font-size: 14pt;
+    font-weight: bold;
+    color: #2d2e47;
+    text-decoration: none;
+        padding-top:5px;
+}
+
+.simpleTopItemContent, .simpleTopItemContent a{
+    font-family: "Arial";
+    font-size: 13px;
+    font-weight: bold;
+    color: #474747;
+}
+
+.simpleTopItemContent{
+    padding-left: 11px;
+}
+
+.simpleTopItemContent a{
+    text-decoration: underline;
+}
+
+.simpleBlock{
+    padding: 0;
+    margin-top:20px;
+    border-spacing: 0;
+}
+
+.simpleBlock, .simpleBlock img {
+    border: 0;
+}
+
+
+.photoTable{
+    width: 100%;
+}
+
+.photoTable td{
+    text-align: center;
+}
+
+.photoTableItem img{
+    border: 3px solid #000000;
+}
+
+.photoTableItem{
+    margin-top: 10px;
+}
+
+.photoTableItem, .photoTableItem a{
+    font-family: "Arial";
+    font-size: 13px;
+    font-weight: bold;
+    color: #474747;
+}
+
+.klcopyright{
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 3px solid #414141;
+    font-family: "Arial";
+    font-size: 12px;
+    font-weight: normal;
+    color: #414141;
+    text-align: center;
+}
+
+.attractionsTopItemFirst, .attractionsTopItemSecond{
+    padding-top: 10px;
+}
+
+ .attractionsTopItemSecond{
+    background: #f0f0f0;
+}
+
+.attractionsTopItemFirst, .attractionsTopItemSecond, .attractionsTopItemFirst a, .attractionsTopItemSecond a{
+    font-family: "Arial";
+    font-size: 12px;
+    font-weight: normal;
+    color: #474747;
+    text-align: left;
+}
+
+
+
+.attractionsTopItemP1 a{
+    font-family: "Arial";
+    font-size: 14px;
+    font-weight: bold;
+    color: #000000;
+    text-decoration: none;
+}
+
+.attractionsTopItemP1{
+    float: left;
+}
+
+.attractionsTopItemP1 img{
+    border: 0px;
+}
+
+.attractionsTopItemP1 a:hover, #linksTable a:hover, .simpleTopItemContent a:hover, .simpleTopItemTitle a:hover, .simpleTopItemContent a:hover, a.buttonLink:hover, .photoTableItem a:hover{
+    color: #777777;
+}
+
+.little_image {
+    width: 30px;
+    height: 20px;
+}
+
+.big_image {
+   width: 300px;
+    height: 200px;
+}
+
+.find_button {
+   width: 900px;
+}
+
+.attraction_name_big {
+  font-size:24pt;
+  font-weight: bold;
+
+}
+
+.category_list {
+    min-width: 20%;
+}
+
+.input {
+    font: 100% Arial, sans-serif;
+    width: 800px;
+    height: 1.86em;
+    size: 400;
+}
+
+.title {
+  font-size:24pt;
+  font-weight:normal;
+  font: Georgia,Times,serif;
+  font-weight: bold;
+  color:#bd2026;
+  margin:1.2em 0 0;
+}
+
+.description, .description-grey {
+  font-size:1.0em;
+  font-weight:normal;
+  font:1.0em Georgia,Times,serif;
+  color:#666;
+  margin:1.2em 0 0;
+  text-align: justify;
+}
+
+.description-grey {
+  background: #f0f0f0;
+}
+
+.description a, .description-grey a {
+    font-family: "Arial";
+    font-size: 13px;
+    font-weight: bold;
+    color: #474747;
+    text-decoration: none;
+}
+.copyright {
+  font-weight:normal;
+  font:0.6em Georgia,Times,serif;
+  color:#666;
+  margin:1.2em 0 0;
+  text-align: justify;
+}
+
+
+.checkbox {
+  font-size:0.9em;
+  font-weight:normal;
+  font:0.9em Georgia,Times,serif;
+  color:#666;
+  margin:1.2em 0 0;
+}
+
+.allcountries {
+   text-align: left;
+}
+
+.allcountries-grey {
+   text-align: left;
+  background: #DCDCDC;
+}
+
+.small_image {
+    width: 123px;
+    height: 123px;
+}
+
+.image_for_maps{
+    width: 20px;
+}
+
+

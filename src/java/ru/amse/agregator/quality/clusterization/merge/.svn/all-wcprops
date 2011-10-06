@@ -1,0 +1,131 @@
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/563/trunk/src/java/ru/amse/agregator/quality/clusterization/merge
+END
+StringListMerger.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/!svn/ver/558/trunk/src/java/ru/amse/agregator/quality/clusterization/merge/StringListMerger.java
+END
+AttributeMerger.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/!svn/ver/324/trunk/src/java/ru/amse/agregator/quality/clusterization/merge/AttributeMerger.java
+END
+StringMerger.java
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/!svn/ver/346/trunk/src/java/ru/amse/agregator/quality/clusterization/merge/StringMerger.java
+END
+ObjectMerger.java
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/!svn/ver/562/trunk/src/java/ru/amse/agregator/quality/clusterization/merge/ObjectMerger.java
+END
+CoordinatesMerger.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/!svn/ver/419/trunk/src/java/ru/amse/agregator/quality/clusterization/merge/CoordinatesMerger.java
+END
+FingerprintTester.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/!svn/ver/402/trunk/src/java/ru/amse/agregator/quality/clusterization/merge/FingerprintTester.java
+END
+CountryIdMerger.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/!svn/ver/397/trunk/src/java/ru/amse/agregator/quality/clusterization/merge/CountryIdMerger.java
+END
+DescriptionFingerprinter.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/!svn/ver/417/trunk/src/java/ru/amse/agregator/quality/clusterization/merge/DescriptionFingerprinter.java
+END
+ClusterMerger.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/!svn/ver/402/trunk/src/java/ru/amse/agregator/quality/clusterization/merge/ClusterMerger.java
+END
+TextFingerprinter.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/!svn/ver/402/trunk/src/java/ru/amse/agregator/quality/clusterization/merge/TextFingerprinter.java
+END
+RatingMerger.java
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/!svn/ver/528/trunk/src/java/ru/amse/agregator/quality/clusterization/merge/RatingMerger.java
+END
+CombinedDescriptionMerger.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/!svn/ver/562/trunk/src/java/ru/amse/agregator/quality/clusterization/merge/CombinedDescriptionMerger.java
+END
+CityIdMerger.java
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/!svn/ver/397/trunk/src/java/ru/amse/agregator/quality/clusterization/merge/CityIdMerger.java
+END
+Fingerprint.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/!svn/ver/402/trunk/src/java/ru/amse/agregator/quality/clusterization/merge/Fingerprint.java
+END
+ContinentiIdMerger.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/!svn/ver/397/trunk/src/java/ru/amse/agregator/quality/clusterization/merge/ContinentiIdMerger.java
+END
+SimpleMerger.java
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/!svn/ver/402/trunk/src/java/ru/amse/agregator/quality/clusterization/merge/SimpleMerger.java
+END
+DoNothingMerger.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/!svn/ver/316/trunk/src/java/ru/amse/agregator/quality/clusterization/merge/DoNothingMerger.java
+END
+FingerprintDescriptionMerger.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/!svn/ver/558/trunk/src/java/ru/amse/agregator/quality/clusterization/merge/FingerprintDescriptionMerger.java
+END
+FrequencyList.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/!svn/ver/417/trunk/src/java/ru/amse/agregator/quality/clusterization/merge/FrequencyList.java
+END
+MergeProcess.java
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/!svn/ver/563/trunk/src/java/ru/amse/agregator/quality/clusterization/merge/MergeProcess.java
+END
+QualityDescriptionMerger.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/!svn/ver/563/trunk/src/java/ru/amse/agregator/quality/clusterization/merge/QualityDescriptionMerger.java
+END

@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/!svn/ver/441/trunk/src/java/ru/amse/agregator/quality/clusterization/clusterstorage
+END
+Cluster.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/!svn/ver/441/trunk/src/java/ru/amse/agregator/quality/clusterization/clusterstorage/Cluster.java
+END
+ArrayStorage.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/!svn/ver/316/trunk/src/java/ru/amse/agregator/quality/clusterization/clusterstorage/ArrayStorage.java
+END
+ClusterStorage.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/!svn/ver/324/trunk/src/java/ru/amse/agregator/quality/clusterization/clusterstorage/ClusterStorage.java
+END

@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/300/trunk/libs/xfreshlibs/jetty
+END
+servlet-api-2.5-20081211.jar
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/300/trunk/libs/xfreshlibs/jetty/servlet-api-2.5-20081211.jar
+END
+jetty-util-6.1.22.jar
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/300/trunk/libs/xfreshlibs/jetty/jetty-util-6.1.22.jar
+END
+jetty-6.1.22.jar
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/300/trunk/libs/xfreshlibs/jetty/jetty-6.1.22.jar
+END

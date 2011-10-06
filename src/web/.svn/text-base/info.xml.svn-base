@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="info.xsl"?>
+<page>
+    <yalet id="attractionTopBlock" />
+    <yalet id="countryTopBlock" />
+    <yalet id="rankingBlock" />
+    <yalet id="continentSelectBlock" />
+    <yalet id="login" />
+</page>

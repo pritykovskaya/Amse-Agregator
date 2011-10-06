@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/577/trunk/src/java/ru/amse/agregator/quality/clusterization
+END
+ClusterizationHelper.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/!svn/ver/562/trunk/src/java/ru/amse/agregator/quality/clusterization/ClusterizationHelper.java
+END
+PartitionClusterizer.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/!svn/ver/362/trunk/src/java/ru/amse/agregator/quality/clusterization/PartitionClusterizer.java
+END
+ClusterizationTester.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/!svn/ver/528/trunk/src/java/ru/amse/agregator/quality/clusterization/ClusterizationTester.java
+END
+Clusterizer.java
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/!svn/ver/316/trunk/src/java/ru/amse/agregator/quality/clusterization/Clusterizer.java
+END
+InternalException.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/!svn/ver/528/trunk/src/java/ru/amse/agregator/quality/clusterization/InternalException.java
+END
+ClusterizationProcess.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/!svn/ver/577/trunk/src/java/ru/amse/agregator/quality/clusterization/ClusterizationProcess.java
+END
